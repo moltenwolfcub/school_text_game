@@ -65,6 +65,14 @@ class tutorial_1(level_struct):
     def start(self):
         if not self.announce_room("start", self.level_layout):   
             self.handle_input(self.get_input())
+    
+    def room_2(self):
+        if not self.announce_room("room_2", self.level_layout):   
+            self.handle_input(self.get_input())
+
+    def end(self):
+        if not self.announce_room("end", self.level_layout):   
+            self.handle_input(self.get_input())
 
 if __name__ == "__main__":
     t1 = tutorial_1()
