@@ -73,11 +73,16 @@ class level_struct:
             print(f"You finished the level you entered the {conditions[0]}!")
 
 
-class room_struct:
+class room_struct(level_struct):
     """Structure of a generic room"""
 
-    def __init__(self, name):
+    def __init__(self, name, layout, level_type, level_num):
         self.name = name
+        self.level_layout = layout
+        self.level_type = level_type
+        self.level_num = level_num
+      
+        super().__init__(self.level_type, self.level_num, self.level_layout)
 
     def run(self):
         if not self.announce_room(self.name):
@@ -90,7 +95,7 @@ class room_struct:
                     
 
     
-class tutorial_1(level_struct):
+class tutorial_1():
     """first tutorial level"""
 
     def __init__(self):
@@ -115,11 +120,10 @@ class tutorial_1(level_struct):
             }
         }
 
-        super().__init__("tutorial", 1, self.level_layout)
 
-    self.start = room_struct("start")
-    self.room_2 = room_struct("room_2")
-    self.end = room_struct("end")
+        self.start = room_struct("start", self.level_layout, "tutorial", 1)
+        self.room_2 = room_struct("room_2", self.level_layout, "tutorial", 1)
+        self.end = room_struct("end", self.level_layout, "tutorial", 1)
 
 ##    def start(self):
 ##        if not self.announce_room("start"):
